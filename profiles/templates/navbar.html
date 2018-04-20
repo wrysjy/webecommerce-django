@@ -8,10 +8,7 @@
         <ul class="navbar-nav mr-auto">
             {% url 'home' as home %}
             {% url 'about' as about %}
-            {% url 'home' as home %}
-            {% url 'about' as about %}
-{#            <li {% if request.path == home %} class="nav-item active" {% endif %}><a href="{% url 'home' %}>Home</a></li>#}
-{#            <li {% if request.path == about %} class="nav-item active" {% endif %}><a href="{% url 'about' %}>About</a></li>#}
+            {% url 'contact' as contact %}
 
           <li {% if request.path == home %} class="nav-item active" {% endif %}>
             <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
@@ -19,8 +16,8 @@
           <li {% if request.path == about %} class="nav-item active" {% endif %}>
             <a class="nav-link" href="{% url 'about' %}">About</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+          <li {% if request.path == contact %} class="nav-item active" {% endif %}>
+            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
