@@ -1,4 +1,11 @@
 {% load static %}
+<style>
+{% comment %}img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}{% endcomment %}
+</style>
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,7 +15,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Jumbotron Template for Bootstrap</title>
+    <title>Shoping Online</title>
 
     <!-- Bootstrap core CSS -->
       <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}" />
@@ -38,8 +45,8 @@
         <div class="row">
         {% for product in product_number %}
             <div class="col-md-4">
-                <h2>{{ product.name }}</h2>
-                <img src="{{ product.image.url }}" width="150">
+                <h2 >{{ product.name }}</h2>
+                <img src="{{ product.image.url }}" width="150px" height="180px">
                 <p>{{ product.description }}</p>
                 <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
             </div>
