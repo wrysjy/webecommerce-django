@@ -15,15 +15,33 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from profiles import views as profiles_views
+from rest_framework import routers
+
+from profiles import views as profiles_views, viewsapi
 from contact import views as contact_views
+
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.conf.urls import url, include
+
+router = routers.DefaultRouter()
+router.register(r'users', viewsapi.UserViewSet)
+router.register(r'groups', viewsapi.GroupViewSet)
+router.register(r'category', viewsapi.CategoryViewSet)
+router.register(r'product', viewsapi.ProductViewSet)
 
 urlpatterns = [
+
     path('admin/', admin.site.urls),
     path('', profiles_views.home, name='home'),
     path('about/', profiles_views.about, name='about'),
     path('contact/', contact_views.contact, name='contact'),
+    path('manage/', profiles_views.manage, name='manage'),
+    path('<int:cat>/', profiles_views.home, name='categorys-ss'),
+    path('api/', include(router.urls)),
+    #url(r'^', include(routers.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
